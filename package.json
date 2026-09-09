@@ -1,0 +1,10 @@
+{
+  "name": "portfolio-project-runner",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix ./Portfolio-main run dev",
+    "build": "npm --prefix ./Portfolio-main run build",
+    "lint": "npm --prefix ./Portfolio-main run lint",
+    "preview": "npm --prefix ./Portfolio-main run preview"
+  }
+}
