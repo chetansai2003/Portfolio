@@ -11,7 +11,7 @@ interface TypingTextProps {
 export default function TypingText({ text, className = "", speed = 30, delay = 0 }: TypingTextProps) {
   const [displayedText, setDisplayedText] = useState("");
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
@@ -26,12 +26,13 @@ export default function TypingText({ text, className = "", speed = 30, delay = 0
   useEffect(() => {
     if (!started) return;
 
-    let currentIndex = 0;
+    let index = 0;
+    setDisplayedText("");
+
     const interval = setInterval(() => {
-      if (currentIndex < text.length) {
-        setDisplayedText((prev) => prev + text.charAt(currentIndex));
-        currentIndex++;
-      } else {
+      index++;
+      setDisplayedText(text.slice(0, index));
+      if (index >= text.length) {
         clearInterval(interval);
       }
     }, speed);
